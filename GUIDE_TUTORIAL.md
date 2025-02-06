@@ -19,7 +19,8 @@ npx expo i -- --save-dev prettier eslint-config-prettier eslint-plugin-prettier
 extends: ["expo", "prettier"],
 plugins: ["prettier"],
 rules : {
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "endOfLine": "auto"
 }
 
 --Para obtener info de los dispositivos.
@@ -64,7 +65,7 @@ config el archivo de tailwind
 
 --Enrutado y cosas varias
 npx expo install expo-router react-native-safe-area-context react-native-screens expo-linking expo-constants expo-status-bar
-cambiar "main" _> "expo-router/entry"
+cambiar en package.json = "main" -> "expo-router/entry"
 
 en app.json "expo": {
 	add -> "scheme" : "nombre de la app"
@@ -87,7 +88,7 @@ expo vector icons
 npm install @expo/vector-icons
 icons.expo.fyi
 
-"al crecer ell proyecto crear un componente con todo los imports de los icons y exportar los iconos.
+"al crecer el proyecto crear un componente con todo los imports de los icons y exportar los iconos.
 centralizar en un solo lado los iconos".
 
 continuar en el minuto 52:11
@@ -150,3 +151,6 @@ folder app -> aqui es donde los archivos que se crean aqui seran parte del enrut
       </View>
     </SafeAreaProvider>
 ```
+
+Preguntas que tengo:
+* Al cambiar el package json de index.js a expo-router/entry app.jsx deja de tener uso?
