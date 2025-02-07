@@ -6,6 +6,7 @@ import {
   BellIcon,
   FriendIcon,
   FlameIcon,
+  Bars,
 } from "../../components/Icons";
 
 export default function LayoutTabs() {
@@ -29,8 +30,8 @@ export default function LayoutTabs() {
         headerTitleStyle: {
           color: "white",
         },
-        headerLeft: () => <Text className="text-white ml-5">aqui</Text>,
-        headerRight: ({ color }) => <BellIcon color={color} />,
+        headerLeft: () => <Bars className="ml-5" />,
+        headerRight: ({ color }) => <BellIcon className="mr-5" />,
         tabBarStyle: {
           backgroundColor: "white",
           paddingBottom: 1,
