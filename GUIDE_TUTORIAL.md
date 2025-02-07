@@ -154,3 +154,35 @@ folder app -> aqui es donde los archivos que se crean aqui seran parte del enrut
 
 Preguntas que tengo:
 * Al cambiar el package json de index.js a expo-router/entry app.jsx deja de tener uso?
+
+--Para tener la geoLocalizacion se necesita:
+
+npx expo install expo-location
+
+dentro pluglins:
+"plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
+        }
+      ]
+    ]
+
+```
+import * as Location from "expo-location";
+
+
+const getCurrentLocation = async () => {
+    let { status } = await Location.requestForegroundPermissionsAsync();
+    console.log(status);
+    if (status !== "granted") {
+      setErrorMsg("Permission to access location was denied");
+      return;
+    }
+    let {coords, timestamp} = await Location.getCurrentPositionAsync({});
+    console.log(coords)
+    setLocation(coords); 
+  };
+
+```

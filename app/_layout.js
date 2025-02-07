@@ -8,7 +8,7 @@ export default function Layout() {
   return (
     <SafeAreaView className="flex-1 bg-[#E51A13]">
       <View className="flex-1 bg-red-100">
-        <StatusBar style="auto"/>
+        <StatusBar style="dark"/>
         <Slot />
       </View>
     </SafeAreaView>
