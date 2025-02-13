@@ -1,7 +1,7 @@
 https://www.youtube.com/watch?v=ZDoiMLqWz2E
 
-Crear proyecto en blanco
---npx create-expo-app@latest nombre del proyecto --template blank
+--Crear proyecto en blanco
+npx create-expo-app@latest nombre del proyecto --template blank
 
 --Estructura que crea del proyecto
 ya me lo tira el proyecto de expo pero seria la siguiente:
@@ -54,7 +54,7 @@ npm i --save-dev --save exact tailwindcss@3.3.2
 npx tailwindcss init
 config el archivo de tailwind
 
--config en babel (si no lo tengo lo agrego al archivo babel.config.js)
+--config en babel (si no lo tengo lo agrego al archivo babel.config.js)
         module.exports = function(api) {
             api.cache(true);
             return{
@@ -186,3 +186,9 @@ const getCurrentLocation = async () => {
   };
 
 ```
+--Para salir del entorno de Expo Go.
+npx expo prebuild
+npx expo run:android
+
+--Usando React native cookies para el inicio de session
+npm i @react-native-cookies/cookies

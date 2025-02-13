@@ -1,4 +1,4 @@
-import { Tabs } from "expo-router";
+import { Tabs, useRouter } from "expo-router";
 import { Text } from "react-native";
 import { styled } from "nativewind";
 import {
@@ -11,6 +11,7 @@ import {
 
 export default function LayoutTabs() {
   const StyledTabs = styled(Tabs);
+
   return (
     <Tabs
       screenOptions={{
