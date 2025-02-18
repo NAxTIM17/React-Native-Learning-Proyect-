@@ -1,4 +1,4 @@
-import { Text, View, Button, Image, Pressable, TextInput } from "react-native";
+import { Text, View, Image, Pressable, TextInput } from "react-native";
 import { styled } from "nativewind";
 import { useAuth } from "../context/AuthContext";
 import { useState } from "react";
@@ -13,14 +13,11 @@ export default function Login() {
   });
 
   const handleChange = (key, value) => {
-    console.log(key, value);
     setUserInfo((prev) => ({
       ...prev,
       [key]: value,
     }));
   };
-
-  console.log(userInfo)
 
   return (
     <View className="bg-[#12192B] p-5 flex-1 justify-center items-center">

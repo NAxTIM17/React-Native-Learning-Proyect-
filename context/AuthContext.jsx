@@ -1,40 +1,56 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
 import * as SecureStore from "expo-secure-store";
+import { ActivityIndicator } from "react-native";
 
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [userToken, setUserToken] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchSession = async () => {
+    init();
+  }, []);
+
+  const init = async () => {
+    await checkAuth();
+    //another functions...
+  };
+
+  const checkAuth = async () => {
+    try {
       const session = await SecureStore.getItemAsync("B1SESSION");
       if (session) {
         setUserToken({
           B1SESSION: session,
         });
       }
-    };
-    fetchSession();
-  }, []);
+    } catch (error) {
+      console.log(error);
+    }
+    setLoading(false)
+  };
 
   const login = async (body) => {
+    setLoading(true);
     try {
       const response = await axios.post(
         "https://paneltesting-api.yuhmak.com/api/v1/logIn",
         body
       );
-      console.log(response.data.session);
-      setUserToken({
-        B1SESSION: response.data.session["B1SESSION"],
-      });
-      // save in secure store
-      await SecureStore.setItemAsync(
-        "B1SESSION",
-        response.data.session["B1SESSION"]
-      );
+      if (response) {
+        setLoading(false);
+        setUserToken({
+          B1SESSION: response.data.session["B1SESSION"],
+        });
+        await SecureStore.setItemAsync(
+          "B1SESSION",
+          response.data.session["B1SESSION"]
+        );
+      }
     } catch (error) {
+      setLoading(false);
       console.log(error);
     }
   };
@@ -44,9 +60,10 @@ export function AuthProvider({ children }) {
     await SecureStore.deleteItemAsync("B1SESSION");
   };
 
+
   return (
     <AuthContext.Provider value={{ login, logout, userToken }}>
-      {children}
+      {loading ? <ActivityIndicator size="large" /> : children}
     </AuthContext.Provider>
   );
 }

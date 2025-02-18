@@ -7,7 +7,7 @@ import {
   FriendIcon,
   FlameIcon,
   Bars,
-} from "../../components/Icons";
+} from "../../../components/Icons";
 
 export default function LayoutTabs() {
   const StyledTabs = styled(Tabs);

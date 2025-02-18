@@ -7,7 +7,15 @@ npx create-expo-app@latest nombre del proyecto --template blank
 ya me lo tira el proyecto de expo pero seria la siguiente:
 -> Carpetas : 
     -> Components
+
+
     -> app
+        -> (auth)
+            ->_layout.jsx -- AppLayout ->  auth check and redirect or render <Slot /> return !session ? redirect : slot
+            -> cualquier pagina que quiero que este protegida.
+    -> login.jsx -- En login hacer el if si tengo session y redireccionar a home con <Redirect href="/rta"/>
+    -> _layout.jsx -- RootLayout ->  just render a <Slot /> y anda más.
+
     -> hooks
 
 --Configurar esLint y prettier

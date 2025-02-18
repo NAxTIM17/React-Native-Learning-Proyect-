@@ -1,13 +1,12 @@
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import Screen from "../components/Screen";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { AuthProvider } from "../context/AuthContext";
+import { Slot } from "expo-router";
 
-export default function Layout() {
+export default function RootLayout() {
+
   return (
     <AuthProvider>
-      <SafeAreaView className="flex-1 bg-[#E51A13]">
-        <Screen />
-      </SafeAreaView>
+        <Slot />
     </AuthProvider>
   );
 }
